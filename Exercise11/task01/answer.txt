@@ -1,0 +1,20 @@
+If i understood the task correctly the second element from the pair returned by
+findposition(container, 31) is the iterator which has to be used for the insert
+function. After the insertion printnext3 is called using the decremented second
+element from the pair.
+In my case the output from the printnext3 calls shows the following (order: vector, deque, list):
+
+30 32 34
+31 32 34
+31 32 34
+
+Considering that the insert method is adding the element in front of the given
+iterator all of the printnext3 calls should start with 31 (like the list's output).
+By taking the iterator validity from the different insert methods into account all
+I can say is that only the list's output stays valid because here the iterators
+are never invalidated. In the case of the vector and deque the iterator's validity
+is not assured because the vector will be resized and reallocated, while the deque's
+iterator are never staying valid.
+
+To see how this issue is fixed and why the fix works please take a look at the
+code and it's comments in line 92 and following.

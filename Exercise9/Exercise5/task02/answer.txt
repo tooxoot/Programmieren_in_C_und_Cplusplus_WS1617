@@ -1,0 +1,9 @@
+I hope i edited the program in the intended way.
+
+The old function was wrapped in a class called "Workarround" thus becoming a
+member of it which is not seen as the mainmethod run by the compiler.
+
+An additional method called "main" outside of the class has to be defined which
+is then run after compiling the program and executing the executable.
+Inside of this method an object of the type of "Workarround" is initialized and
+its member function "main" is called.

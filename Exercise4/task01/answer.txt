@@ -1,0 +1,45 @@
+a)
+  Macro
+
+    Advantages:
+      After preprocessing the code no function-calls are remaining and just the
+      values are used. Therefore the program will perform faster.
+
+    Disadvantages:
+      At least in this case the macro is not robust and there will be unexpected
+      behavior.
+      In general the usage of macros will slow down the code's compilation.
+
+  Functions
+
+      Advantages:
+        Due to the type-checking function calls are more robust than unchecked macro
+        solutions and will most likely produce less unexpected behavior.
+
+      Disadvantages:
+        To have lots of function calls will have a negative impact on the performance
+        of the program.
+
+b)
+  The maxf function is called with two arguments. The first a is an integer while
+  the second b+0.2 is interpreted as a double value.
+  Unfortunately the variants for maxf are accepting either two integer or two double
+  values. A variant for an integer and a double value is not defined and therefor
+  this line will not compile.   
+
+c)
+  maxf1:
+    Until now a was not changed from its initial value of 10 and b was just changed
+    with the ++ operator which is in this case an integer operation.
+    In conclusion the parameters in the call of maxf are two integers.
+    The integer variant is called!
+
+  maxf2:
+    By adding 0.1 and 0.2 to the values of a and b the parameters are interpreted
+    as double values.
+    The double variant is called!
+
+  maxf3:
+    For this one the same argumentation as for maxf1 applies. The value of a was
+    never changed persistently. And b was only changed by integer operations.
+    The integer variant is called!

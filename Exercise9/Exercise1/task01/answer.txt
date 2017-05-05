@@ -1,0 +1,18 @@
+System: Linux 64bit
+Compiler: gcc 6.1.1-1
+
+Output:
+
+char 1
+short 2
+int 4
+long 8
+long long 8
+float 4
+double 8
+long double 16
+pointer 8
+
+---
+
+For me it was not possible to test this program on another system.

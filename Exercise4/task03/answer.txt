@@ -1,0 +1,31 @@
+a)
+  The program's output is:
+  top = 1, bottom = 42
+
+  The error happens in the for-loop which is executed until i = 5. By doing so
+  the loop exceeds the array's length and writes to the next value outside the
+  array's boundaries which happens to be s.bottom.
+
+b)
+  gdb commands:
+
+  (gdb) b 10
+  (gdb) run
+  (gdb) watch s.bottom
+  (gdb) continue
+  (gdb) info locals
+  (gdb) continue
+  (gdb) info locals
+
+  The first command is needed to have a point where s is initialized. After that
+  the execution is started by entering 'run'.
+  Now the execution will break after initializing s, so that the third command is
+  actually able to set a watchpoint on s.bottom. With this watchpoint the 'continue'
+  command will break every time when s.bottom is changed.
+  The first time this happens s.bottom's value was set from its initial value to 2.
+  'info locals' will then give detailed informations about s in general.
+  The second 'continue' will now execute until s.bottom is set from 2 to 42.
+  'info locals' will now show that s.bottom and every value from s.arr are set to
+  42. It also shows that i = 5, explaining why s.bottom was wrongly changed to 42.
+
+    

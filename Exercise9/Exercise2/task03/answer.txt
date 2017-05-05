@@ -1,0 +1,4 @@
+Behavior of scanf:
+  The scanf function reads from the standard input and converts it using the items
+  specified in the format string. However it will read multiple lines of input
+  until all of the specified items are found.

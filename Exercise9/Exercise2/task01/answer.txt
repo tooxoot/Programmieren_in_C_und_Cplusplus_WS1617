@@ -1,0 +1,18 @@
+Expectations:
+  I expect the output to be 2.
+
+Reality:
+  The actual output is 1073741824. In 'scope2.c' globalvar is redefined as a float
+  value which seems to be of a different endian than the int value. Therefore
+  the output is such a huge number.
+
+Prevention:
+
+  Use the gcc option '-fno-common' to force the compiler to throw an error if
+  multiple definition of a symbol appears.
+
+  Use 'Wl,--trace-symbol=SYMBOL' to get notification of every definition and
+  reference of specified symbol.
+
+  Use 'Wl,--warn-common' to get a warning if multiple definitions of a symbol
+  appear.

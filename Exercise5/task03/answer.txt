@@ -1,0 +1,18 @@
+To compare the move and copy method without using std::move, I built a workaround
+using a function call.
+
+Unfortunately this Method then calls the copy-constructor as well as the destructor
+two times. This behavior was then emulated in the copy test.
+
+Result:
+  The Time it took for the move test to execute 10,000 calls was significantly more
+  than for the 10,000 copy calls (around 15 second more).
+
+  I assume that the cause of this difference lies in accessing the moved variables
+  to leave them in an undefined state.
+
+Question:
+  As I was testing my calls for Stacks with a size of 1,000,000 instead of 100,000,
+  my executable was killed due to massive memory use (around 4GB of ram).
+  What i don't understand is where this happens.
+  Can you find a flaw in the copy test or the destructor?      

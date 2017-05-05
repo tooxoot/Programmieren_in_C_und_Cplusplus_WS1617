@@ -1,0 +1,11 @@
+Description:
+I knew that I had to modify the return address of the function call but I really
+didn't know how to achieve this. So I looked it up on Stack-Overflow and tried
+different things until I found a solution that worked for my system.
+Now it seems kind of obvious:
+By creating a char I can access the first variable on the stack and from there
+get to the right address to modify.
+
+Change stack size:
+Using the gcc compiler with the parameters '-wl,--stack,' and an appended stack
+size works on Linux and (as far as i know) for Windows.

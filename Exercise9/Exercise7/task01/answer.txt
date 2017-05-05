@@ -1,0 +1,27 @@
+TASK01-b
+
+    The static member function call with 0.22 seconds for the n = 50000000 calls is the
+    fastest.
+    The second fastest are the calls to non-virtual member functions and virtual
+    member functions on referenced objects with 0.33 seconds for n calls.
+    Directly after those come calls of a non-virtual member function on pointers
+    needing 0.37 seconds for n calls.
+    The slowest group are calls of a virtual member function on pointers with 0.5
+    seconds for the n calls.
+
+    The static member call is the fastest because it takes no detour over a reference.
+    Therefore the non-virtual member functions are slower.
+    While calls on a pointer need to convert to a reference to call the function.
+
+
+TASK01-c
+
+    First of all not all compilers support the RTTI needed for dynamic_casts.
+    But the main problem with static calls is that the programmer himself has to
+    make sure that the cast is actually valid and will result in a valid object.
+    For Example if two classes B1 and B2 inherit from the same base class A you
+    could access data from class B1 by casting from a A* pointer that points to
+    a B2 object to an B2* pointer:
+      A*  pA  = new B1();
+      B2* pB2 = (static_cast<B2*> (pA));
+    The Data provided in pB2 might be invalid resulting in undefined behavior.

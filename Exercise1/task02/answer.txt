@@ -1,0 +1,22 @@
+Discoveries:
+An int's size is 4 bytes.
+For each of the 3 top level arrays 32 bytes are allocated (2*4*sizeof(int)).
+Therefore the space between cubes[0] and cubes[1] address is 32 bytes wide.
+For each of the 2 arrays from the second layer 16 bytes are allocated (2*4*sizeof(int)).
+Therefore space between cubes[0][1] and cubes[1][0] address is 16 bytes wide.
+For each of the 4 element from from those second layer arrays 4 bytes are allocated.
+This is just the size of the element itself, an int of 4 bytes.
+
+Basically if you ask for the address of cubes[m][n] you get the address
+of the first element of nth array.
+If you ask for the address of cubes[m] you get the address of the first element from
+the first array of m.
+
+To visualize this structure furthermore, below the structure of
+int tmp[2][2][2] is shown.
+
+Address:      ...00     ...4      ...8      ...12     ...16     ...20     ...24     ...28
+Bytes:        {}{}{}{}  {}{}{}{}  {}{}{}{}  {}{}{}{}  {}{}{}{}  {}{}{}{}  {}{}{}{}  {}{}{}{}
+tmp[i]:       [0]                                     [1]
+tmp[i][j]:    [0][0]              [0][1]              [1][0]              [1][1]
+tmp[i][j][k]: [0][0][0] [0][0][1] [0][1][0] [0][1][1] [1][0][0] [1][0][1] [1][1][0] [1][1][1]
